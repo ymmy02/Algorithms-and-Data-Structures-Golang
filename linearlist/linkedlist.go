@@ -13,7 +13,7 @@ type LinkedList struct {
 	head *Node
 }
 
-func (linkedList *LinkedList) append(value int) {
+func (linkedList *LinkedList) Append(value int) {
 	var lastNode *Node
 	lastNode = linkedList.head
 	newNode := &Node{value: value, next: nil}
@@ -27,7 +27,7 @@ func (linkedList *LinkedList) append(value int) {
 	}
 }
 
-func (linkedList *LinkedList) printValues() {
+func (linkedList *LinkedList) PrintValues() {
 	var currentNode = linkedList.head
 	for currentNode != nil {
 		fmt.Printf("%d ", currentNode.value)
