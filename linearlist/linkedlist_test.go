@@ -6,10 +6,27 @@ import (
 
 func TestPrintValues(t *testing.T) {
 	linkedList := LinkedList{head: nil}
-	linkedList.append(1)
-	linkedList.append(2)
-	linkedList.append(3)
-	linkedList.append(1)
-	linkedList.append(5)
-	linkedList.printValues()
+	linkedList.Append(1)
+	linkedList.Append(2)
+	linkedList.Append(3)
+	linkedList.Append(1)
+	linkedList.Append(5)
+	if linkedList.ToString() != "1 2 3 1 5 " {
+		t.Error("Something worng with Append or ToString method")
+	}
+	linkedList.PrintValues()
+}
+
+func TestReverse(t *testing.T) {
+	linkedList := LinkedList{head: nil}
+	linkedList.Append(1)
+	linkedList.Append(2)
+	linkedList.Append(3)
+	linkedList.Append(1)
+	linkedList.Append(5)
+
+	linkedList.Reverse()
+	if linkedList.ToString() != "5 1 3 2 1 " {
+		t.Error("Something worng with Reverse method")
+	}
 }

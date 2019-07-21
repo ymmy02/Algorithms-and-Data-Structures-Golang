@@ -2,6 +2,7 @@ package linearlist
 
 import (
 	"fmt"
+	"strconv"
 )
 
 type Node struct {
@@ -34,4 +35,32 @@ func (linkedList *LinkedList) PrintValues() {
 		currentNode = currentNode.next
 	}
 	fmt.Printf("\n")
+}
+
+func (linkedList *LinkedList) ToString() string {
+	var str string
+	var currentNode = linkedList.head
+	for currentNode != nil {
+		str += strconv.Itoa(currentNode.value) + " "
+		currentNode = currentNode.next
+	}
+	return str
+}
+
+func (linkedList *LinkedList) Reverse() {
+	if linkedList.head == nil {
+		return
+	}
+
+	var currentNode, nextNode *Node
+	currentNode = linkedList.head
+	nextNode = currentNode.next
+	currentNode.next = nil
+	for nextNode != nil {
+		tmpNode := nextNode.next
+		nextNode.next = currentNode
+		currentNode = nextNode
+		nextNode = tmpNode
+	}
+	linkedList.head = currentNode
 }
