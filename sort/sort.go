@@ -4,8 +4,7 @@ func QuickSort(source []int) {
 	if len(source) < 2 {
 		return
 	}
-	m := int(len(source) / 2)
-	pivot := source[m]
+	pivot := source[0]
 	l := 0
 	r := len(source) - 1
 	for {
@@ -26,6 +25,41 @@ func QuickSort(source []int) {
 	right := source[r+1:]
 	QuickSort(left)
 	QuickSort(right)
+}
+
+func MergeSort(source []int) []int {
+	if len(source) < 2 {
+		return source
+	}
+	m := int(len(source) / 2)
+	var left []int = MergeSort(source[:m])
+	var right []int = MergeSort(source[m:])
+	dist := make([]int, len(source))
+	var i, j, k int = 0, 0, 0
+	for i < len(left) && j < len(right) {
+		if left[i] < right[j] {
+			dist[k] = left[i]
+			i++
+		} else {
+			dist[k] = right[j]
+			j++
+		}
+		k++
+	}
+	if i < len(left) {
+		for i < len(left) {
+			dist[k] = left[i]
+			i++
+			k++
+		}
+	} else {
+		for j < len(right) {
+			dist[k] = right[j]
+			j++
+			k++
+		}
+	}
+	return dist
 }
 
 func BubbleSort(source []int) {
