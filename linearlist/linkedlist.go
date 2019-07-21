@@ -28,6 +28,40 @@ func (linkedList *LinkedList) Append(value int) {
 	}
 }
 
+func (linkedList *LinkedList) DeleteOne(value int) {
+	var prevNode, currentNode *Node
+	prevNode = nil
+	currentNode = linkedList.head
+	if currentNode == nil {
+		return
+	}
+	if currentNode.value == value { // Delete the first node
+		linkedList.head = currentNode.next
+		currentNode = nil
+		return
+	}
+	for currentNode != nil {
+		if currentNode.value == value {
+			prevNode.next = currentNode.next
+			currentNode = nil
+			return
+		}
+		prevNode = currentNode
+		currentNode = currentNode.next
+	}
+}
+
+func (linkedList *LinkedList) Length() int {
+	length := int(0)
+	var currentNode *Node
+	currentNode = linkedList.head
+	for currentNode != nil {
+		length++
+		currentNode = currentNode.next
+	}
+	return length
+}
+
 func (linkedList *LinkedList) PrintValues() {
 	var currentNode = linkedList.head
 	for currentNode != nil {
