@@ -2,5 +2,6 @@
 
 Language: Go
 
-## Linked List
+## Linear List
 
+- Linked List
