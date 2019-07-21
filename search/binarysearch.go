@@ -1,4 +1,4 @@
-package binarysearch
+package search
 
 func BinarySearch(array []int, value int) int {
 	var l int = 0
