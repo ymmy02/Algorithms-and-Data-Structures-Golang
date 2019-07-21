@@ -27,3 +27,23 @@ func QuickSort(source []int) {
 	QuickSort(left)
 	QuickSort(right)
 }
+
+func BubbleSort(source []int) {
+	var length int = len(source)
+	if length < 2 {
+		return
+	}
+
+	for i := 0; i < length-1; i++ {
+		var swap bool = false
+		for j := length - 1; j > i; j-- {
+			if source[j] < source[j-1] {
+				source[j], source[j-1] = source[j-1], source[j]
+				swap = true
+			}
+		}
+		if !swap {
+			break
+		}
+	}
+}
